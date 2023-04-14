@@ -1,0 +1,15 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css");
+
+.mycarousel img{
+    width:100%;
+    height: 450px;
+    background-size: cover;
+    margin-top: 2px;
+}
+
+/* responsiveness */
+@media only screen and (max-width: 600px) {
+    .mycarousel img{
+       height: 350px;
+    }
+}

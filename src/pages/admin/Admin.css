@@ -1,0 +1,35 @@
+.admincont{
+    background-color: red;
+   width:100%;
+   /* background: linear-gradient(0.25turn, #43C6AC, #F8FFAE,); */
+   height: 100vh;
+   display: flex;
+   align-items: center;
+}
+.adminitem{
+    width:60%;
+    margin: auto;
+    /* border:1px solid red; */
+    /* height: 300px; */
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    background-size: cover;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .adminitem{
+       flex-wrap: wrap;
+       gap: 50px;
+       width: 80%;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .adminitem{
+       
+       gap: 50px;
+       
+    }
+  }
