@@ -1,6 +1,9 @@
 **_Backend Repo URL_**
 https://github.com/Abhijeet9242/Backend_Ecommerce
 
+**_Deployed URL_**
+https://frontend-ecommerce-black.vercel.app/
+
 
 **_Technology I used_**
 
