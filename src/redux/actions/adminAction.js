@@ -1,7 +1,8 @@
 import {ADD_PRODUCT, ADMIN_SIGNIN_FAILURE, ADMIN_SIGNIN_SUCCESS, DELETE_PRODUCT, GET_PRODUCT} from "../actionTypes/adminActiontype"
 import axios from "axios";
 
-const BASE_URL = "http://localhost:4005/products"
+// const BASE_URL = "http://localhost:4005/products"
+const BASE_URL = "https://ecommerce2-q3-assignment-backend.onrender.com/products"
 
 export const addProduct = (product) => async(disptach) => {
     
@@ -61,7 +62,8 @@ export const deleteProduct = (productId) => async(dispatch)=>{
 
 export const AdminsignIn = (email, password) => async (dispatch) => {
     try {
-      const res = await axios.post("http://localhost:4005/admin/login", { email, password });
+    //   const res = await axios.post("http://localhost:4005/admin/login", { email, password });
+    const res = await axios.post("https://ecommerce2-q3-assignment-backend.onrender.com/admin/login", { email, password });
 
     //   console.log(res.data.user,"hh")
     const adminData = res.data.admin

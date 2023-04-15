@@ -63,7 +63,8 @@ const CartTable = () => {
     try {
       // const userId = JSON.parse(localStorage.getItem("userId"));
       if (userId) {
-        const deleteditem = await axios.patch(`http://localhost:4005/user/cart/delete/${userId}`, { productId });
+        // const deleteditem = await axios.patch(`http://localhost:4005/user/cart/delete/${userId}`, { productId });
+        const deleteditem = await axios.patch(`https://ecommerce2-q3-assignment-backend.onrender.com/user/cart/delete/${userId}`, { productId });
         console.log(deleteditem)
         dispatch(showCartData(userId));
       }
@@ -77,7 +78,8 @@ const CartTable = () => {
 const deleteCart = async() => {
   try{
     if (userId) {
-      const deletedcart = await axios.patch(`http://localhost:4005/user/cart/deletecart/${userId}`);
+      // const deletedcart = await axios.patch(`http://localhost:4005/user/cart/deletecart/${userId}`);
+      const deletedcart = await axios.patch(`https://ecommerce2-q3-assignment-backend.onrender.com/user/cart/deletecart/${userId}`);
       console.log(deletedcart,"vv")
       dispatch(showCartData(userId));
     }

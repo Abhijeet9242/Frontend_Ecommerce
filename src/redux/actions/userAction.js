@@ -10,7 +10,8 @@ import {
   SHOW_CART_SUCCESS,
 } from "../actionTypes/userActionType";
 
-const BASE_URL = "http://localhost:4005/user";
+// const BASE_URL = "http://localhost:4005/user";
+const BASE_URL = "https://ecommerce2-q3-assignment-backend.onrender.com/user";
 
 export const Signup = (name, email, password) => async (dispatch) => {
   console.log(email, password);
