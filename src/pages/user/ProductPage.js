@@ -14,9 +14,11 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 // import {Button} from '@mui/material/Button';
 import { addToCartData } from "../../redux/actions/userAction";
+import { showCartData } from '../../redux/actions/userAction';
 
 const ProductPage = () => {
   const datas = useSelector((state) => state.product.products);
+  const cartdata = useSelector((state) => state.user.cart);
   const [products, setProducts] = useState(null);
   const [ratingFilter, setRatingFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
@@ -25,6 +27,8 @@ const ProductPage = () => {
   const [page, setPage] = useState(1);
   const productsPerPage = 6;
   const totalPages = Math.ceil(products?.length / productsPerPage);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProduct());
@@ -38,12 +42,26 @@ const ProductPage = () => {
 
   const userId = JSON.parse(localStorage.getItem("userId"));
 
+  useEffect(() => {
+    if (userId) {
+      dispatch(showCartData(userId));
+    }
+  }, [dispatch, userId])
+
   // console.log("dat",datas)
-  const dispatch = useDispatch();
 
   const addToCart = (productId) => {
     // console.log(productId,"proid")
     // console.log(userId,"usu")
+
+    const isProductInCart = Array.isArray(cartdata.cart) && cartdata.cart.find(
+      (item) => item === productId
+    );
+    if (isProductInCart) {
+      alert("Product is already in cart");
+      return;
+    }
+
     dispatch(addToCartData(userId, productId));
     dispatch(getProduct());
   };
@@ -291,7 +309,7 @@ const ProductPage = () => {
                         alt="green iguana"
                         height="220"
                         image={data.image}
-                        style={{objectFit:"contain"}}
+                        style={{ objectFit: "contain" }}
                       />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
@@ -331,11 +349,11 @@ const ProductPage = () => {
         </Box>
       </Box>
 
-      <Box style={{display:"flex",justifyContent:"center",marginBottom:"30px",marginTop:"20px"}}>
-      <Button  variant="outlined" size="small" onClick={handlePrevPage} disabled={page === 1}>
+      <Box style={{ display: "flex", justifyContent: "center", marginBottom: "30px", marginTop: "20px" }}>
+        <Button variant="outlined" size="small" onClick={handlePrevPage} disabled={page === 1}>
           Previous
         </Button>
-        <span style={{margin:"0px 10px",color:"teal"}}>{`Page ${page} of ${totalPages}`}</span>
+        <span style={{ margin: "0px 10px", color: "teal" }}>{`Page ${page} of ${totalPages}`}</span>
         <Button variant="outlined" size="small" onClick={handleNextPage} disabled={page === totalPages}>
           Next
         </Button>
